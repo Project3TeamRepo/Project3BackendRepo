@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ultimate Organizer</title>
+
+    <!--Google Oauth API standalone-->
+    <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+    <script type="text/javascript"> gapi.load('auth2', function() {});</script>
+
+    <!--React without a react app or React Router-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="styles/home.css">
+
+    <!-- Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript for Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+<!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+<nav>
+        <div class="nav-wrapper #fb8c00 orange darken-1">
+          <a href="#" class="brand-logo" id="foto"> <!----<img src="images/family.png" style="width:6%";--> </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><!--<a href="sass.html">--><a href="/calendar.html">Login</a></li>
+            <li><a href="badges.html">Sign Up</a></li>
+            <li><a href="collapsible.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+    <body>
+        <div class="jumbotron">
+            <h1 class="display-4">Your Family Command Center!</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p></p>
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="goToCalendar" data-id=1>Create a free account</a>
+        </div>    
+    
+     <div id="homeDiv">
+
+     </div>
+    
+    <script src="./js/like_button.js"></script>
+    <script>
+        //example javascript request
+        // var url = 'https://www.googleapis.com/auth/userinfo.email';
+        // var xhr = createCORSRequest('GET', url);
+        // xhr.send();
+        
+        //example REST-ful request
+        // var restRequest = gapi.client.request({
+        //     'path': 'https://www.googleapis.com/auth/userinfo.email'
+        // });
+            
+        //example CORS request
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', 'https://www.googleapis.com/auth/userinfo.email');
+        
+        //example jquery request
+        // $.ajax({
+
+        //     // The 'type' property sets the HTTP method.
+        //     // A value of 'PUT' or 'DELETE' will trigger a preflight request.
+        //     type: 'GET',
+
+        //     // The URL to make the request to.
+        //     url: 'https://www.googleapis.com/auth/userinfo.email',
+
+        //     // The 'contentType' property sets the 'Content-Type' header.
+        //     // The JQuery default for this property is
+        //     // 'application/x-www-form-urlencoded; charset=UTF-8', which does not trigger
+        //     // a preflight. If you set this value to anything other than
+        //     // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
+        //     // you will trigger a preflight request.
+        //     contentType: 'text/plain',
+
+        //     xhrFields: {
+        //         // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
+        //         // This can be used to set the 'withCredentials' property.
+        //         // Set the value to 'true' if you'd like to pass cookies to the server.
+        //         // If this is enabled, your server must respond with the header
+        //         // 'Access-Control-Allow-Credentials: true'.
+        //         withCredentials: false
+        //     },
+
+        //     headers: {
+        //         // Set any custom headers here.
+        //         // If you set any non-simple headers, your server must include these
+        //         // headers in the 'Access-Control-Allow-Headers' response header.
+        //     },
+
+        //     success: function () {
+        //         // Here's where you handle a successful response.
+        //     },
+
+        //     error: function () {
+        //         // Here's where you handle an error response.
+        //         // Note that if the error was due to a CORS issue,
+        //         // this function will still fire, but there won't be any additional
+        //         // information about the error.
+        //     }
+        // });
+        
+        var user = gapi.auth2.getAuthInstance().currentUser.get();
+        var oauthToken = user.getAuthResponse().access_token;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET',
+            'https://www.googleapis.com/auth/userinfo.email');
+        xhr.setRequestHeader('Authorization',
+            'Bearer ' + oauthToken);
+        xhr.send();
+    </script>
+</body>
+    
+</html>

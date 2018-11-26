@@ -1,0 +1,14 @@
+      {{#each shopping}}
+        {{#unless this.List_Status}}
+        <li data-id="{{this.id}}"
+            class = "list-group-item S"
+            onclick = "doneShopping"
+        >
+            <b>Item:</b> {{List_Name}}
+            <br /> <b>Store:</b> {{List_Location}}
+            <br /> <b>Quantity:</b> {{List_Quantity}}
+
+        </li>
+        {{/unless}}
+      {{/each}}
+
