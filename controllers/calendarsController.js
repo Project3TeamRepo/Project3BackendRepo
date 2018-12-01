@@ -10,8 +10,7 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
-
-  app.get("/login/:id", function (req, res) {
+  app.get("/calendar/:id", function (req, res) {
     var condition = req.params.id;
     db.calendars.findAll({where:{For_Whom: condition}})
         .then(function(resultC) {

@@ -1,2 +1,4 @@
-# teamultimateorganizer
-test heroku deployment
+- If you clone this repo and type 'node server' at the command line
+- You will be able to get the home page to load in the browser
+- But I could never recover database connectivity, so you can't use
+-    any of the beautiful routes I wrote :-(
